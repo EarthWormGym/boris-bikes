@@ -41,3 +41,11 @@ describe DockingStation do
     expect{ docking_station.dock Bike.new }.to raise_error 'Docking station full'
  end
 end
+    describe "#release_bike" do
+    it "wont return broken bikes" do
+    docking_station = DockingStation.new(50)
+    bike = Bike.new
+    bike.report_broken
+    expect {docking_station.release_bike}.to raise_error "No bikes available"
+  end
+end
