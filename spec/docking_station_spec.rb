@@ -38,7 +38,7 @@ describe DockingStation do
     it 'has a variable capacity' do
     docking_station = DockingStation.new(50)
     50.times { docking_station.dock Bike.new }
-    expect{ docking_station.dock Bike.new }.to raise_error 'Docking station full'
+    expect { docking_station.dock Bike.new }.to raise_error 'Docking station full'
  end
 end
     describe "#release_bike" do
@@ -46,6 +46,6 @@ end
     docking_station = DockingStation.new(50)
     bike = Bike.new
     bike.report_broken
-    expect {docking_station.release_bike}.to raise_error "No bikes available"
+    expect { docking_station.release_bike }.to raise_error 'No bikes available'
   end
 end

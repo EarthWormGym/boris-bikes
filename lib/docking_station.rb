@@ -1,4 +1,5 @@
-require_relative "bike"
+require_relative 'bike'
+
 class DockingStation
   attr_accessor :bike
   attr_accessor :capacity
@@ -11,8 +12,12 @@ class DockingStation
 
   def release_bike
     fail "No bikes available" if empty?
-    fail "No bikes available" if broken?
+    fail "No bikes available" if find_working_bike.empty?
     @bikes.pop
+  end
+
+  def find_working_bike
+    @bikes.each { |e| return false if e.working? }
   end
 
   def dock(bike)
@@ -25,7 +30,11 @@ class DockingStation
   end
 
   def empty?
-   @bikes.empty?
+   if @bikes.length == 0
+     false
+   else
+     true
+   end
   end
 
 end
